@@ -1,6 +1,6 @@
 import pytest
 
-from pages.basket_page import BasketPage
+from .pages.basket_page import BasketPage
 from .pages.product_page import ProductPage
 
 product_url = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
