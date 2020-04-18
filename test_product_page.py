@@ -17,6 +17,7 @@ class TestLoginFromProductPage:
         yield
         pass
 
+    @pytest.mark.need_review
     def test_guest_can_go_to_login_page_from_product_page(self, browser):
         page = ProductPage(browser, self.link)
         page.open()
@@ -45,6 +46,7 @@ class TestUserAddToBasketFromProductPage:
         page.open()
         page.is_result_messages_not_present()
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         page = ProductPage(browser, product_url+"?promo=offer1")
         page.open()
@@ -54,6 +56,7 @@ class TestUserAddToBasketFromProductPage:
         page.should_be_success_added_page()
 
 
+@pytest.mark.need_review
 @pytest.mark.parametrize('link', [product_url + "?promo=offer0",
                                   product_url + "?promo=offer1",
                                   product_url + "?promo=offer2",
@@ -95,6 +98,7 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     page.is_result_messages_disappeared()
 
 
+@pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     page = ProductPage(browser, product_url)
     page.open()
