@@ -5,15 +5,21 @@ import math
 
 from selenium.webdriver.support.wait import WebDriverWait
 
+from pages.locators import BasePageLocators
+
 
 class BasePage:
-    def __init__(self, browser, url, timeout=20):
+    def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
 
     def open(self):
         self.browser.get(self.url)
+
+    def go_to_basket(self):
+        basket_link = self.browser.find_element(*BasePageLocators.GOTO_BASKET)
+        basket_link.click()
 
     def is_element_present(self, how, what):
         try:
