@@ -26,7 +26,8 @@ class ProductPage(BasePage):
         assert ProductPageLocators.CATALOGUE_STRING in self.browser.current_url, "Product page is not correct"
 
     def should_be_add_to_basket_button(self):
-        assert self.is_element_present(*ProductPageLocators.ADD_TO_BASKET_BUTTON), "Add to basket button is not presented"
+        assert self.is_element_present(*ProductPageLocators.ADD_TO_BASKET_BUTTON), \
+            "Add to basket button is not presented"
 
     def should_be_product_name(self):
         assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME), "Product name is not presented"
@@ -51,3 +52,9 @@ class ProductPage(BasePage):
         price_in_result = self.find_element(*ProductPageLocators.PRODUCT_PRICE_IN_MESSAGE)
         assert price_on_page.text == price_in_result.text, \
             f"Product prices are not matched, got: {price_in_result.text}, expected {price_on_page.text}"
+
+    def is_result_messages_not_present(self):
+        assert self.is_not_element_present(*ProductPageLocators.RESULT_MESSAGE), "Messages block is presented"
+
+    def is_result_messages_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.RESULT_MESSAGE), "Messages block is not disappeared"
