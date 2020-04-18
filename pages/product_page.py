@@ -5,8 +5,8 @@ from .locators import ProductPageLocators
 class ProductPage(BasePage):
 
     def add_to_basket_page(self):
-        login_link = self.browser.find_element(*ProductPageLocators.BASKET_LINK)
-        login_link.click()
+        basket_link = self.browser.find_element(*ProductPageLocators.BASKET_LINK)
+        basket_link.click()
 
     def should_be_product_page(self):
         self.should_be_catalogue_url()

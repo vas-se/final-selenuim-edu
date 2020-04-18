@@ -4,10 +4,11 @@ from selenium.webdriver.common.by import By
 class BasePageLocators:
     GOTO_BASKET = (By.CSS_SELECTOR, ".btn[href='/en-gb/basket/']")
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 
 
 class MainPageLocators:
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    pass
 
 
 class LoginPageLocators:

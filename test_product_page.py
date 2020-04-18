@@ -9,6 +9,27 @@ product_url = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_20
 registration_url = "http://selenium1py.pythonanywhere.com/accounts/login/"
 
 
+@pytest.mark.login
+class TestLoginFromProductPage:
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self):
+        self.link = product_url
+        yield
+        pass
+
+    def test_guest_can_go_to_login_page_from_product_page(self, browser):
+        page = ProductPage(browser, self.link)
+        page.open()
+        page.go_to_login_page()
+        login_page = LoginPage(browser, browser.current_url)
+        login_page.should_be_login_page()
+
+    def test_guest_should_see_login_link(self, browser):
+        page = ProductPage(browser, self.link)
+        page.open()
+        page.should_be_login_link()
+
+
 class TestUserAddToBasketFromProductPage:
 
     @pytest.fixture(scope="function", autouse=True)
